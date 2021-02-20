@@ -1,0 +1,404 @@
+[general]
+server_check_url=http://captive.apple.com/
+dns_exclusion_list= *.cmbchina.com, *.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, *.pingan.com.cn, id6.me
+
+excluded_routes=10.0.0.0/8, 127.0.0.0/8, 169.254.0.0/16, 192.0.2.0/24, 192.168.0.0/16, 198.51.100.0/24, 224.0.0.0/4
+
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/Orz-3/QuantumultX/master/IP.js
+
+resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+
+profile_img_url=https://raw.githubusercontent.com/Orz-3/mini/none/siyi.png
+
+
+[dns]
+# 指定的 dns服务器
+server=114.114.114.114
+server=202.141.176.93 
+server=202.141.178.13
+server=117.50.10.10
+server=223.5.5.5
+server=119.29.29.29:53
+server=119.28.28.28
+# 指定域名解析dns
+server=/*.taobao.com/223.5.5.5
+server=/*.tmall.com/223.5.5.5
+server=/*.alipay.com/223.5.5.5
+server=/*.alicdn.com/223.5.5.5
+server=/*.aliyun.com/223.5.5.5
+server=/*.jd.com/119.28.28.28
+server=/*.qq.com/119.28.28.28
+server=/*.tencent.com/119.28.28.28
+server=/*.weixin.com/119.28.28.28
+server=/*.bilibili.com/119.29.29.29
+server=/hdslb.com/119.29.29.29
+server=/*.163.com/119.29.29.29
+server=/*.126.com/119.29.29.29
+server=/*.126.net/119.29.29.29
+server=/*.127.net/119.29.29.29
+server=/*.netease.com/119.29.29.29
+server=/*.mi.com/119.29.29.29
+server=/*.xiaomi.com/119.29.29.29
+
+[policy]
+static=节点选择, 手动选择, 延迟最低, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/static.png
+
+static=手动选择, server-tag-regex=.*, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Manual.png
+
+url-latency-benchmark=延迟最低, server-tag-regex=.*, check-interval=300, tolerance=0, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Auto.png
+
+static=Apple服务, direct, 节点选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png
+
+static=屏蔽系统更新, reject, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
+
+static=Speedtest, direct, 节点选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Speedtest.png
+
+static=YouTube, direct, 节点选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/YouTube.png
+
+static=Netflix, direct, 手动选择, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
+
+[server_remote]
+https://subv2.nanoport.xyz/api/v1/client/subscribe?token=1bbd63705dfa293432c061ce7931f732, tag=hrx, update-interval=86400, opt-parser=true, enabled=true
+
+
+[filter_remote]
+# 超过4万条广告规则, 阻止常见的APP广告/隐私/行为/数据/流量/劫持的统计和追踪
+https://raw.githubusercontent.com/NobyDa/ND-AD/master/QuantumultX/AD_Block.txt, tag=AD_Block（4万条去广告规则）, force-policy=reject, update-interval=86400, opt-parser=true, enabled=true
+
+# 超过6万条国内外广告规则, 可以与"AD_Block.txt"一起使用, 注: 可能有一些误杀, 请谨慎使用
+https://raw.githubusercontent.com/NobyDa/ND-AD/master/QuantumultX/AD_Block_Plus.txt, tag=AD_Block_plus（6万条去广告规则）, force-policy=reject, update-interval=86400, opt-parser=true, enabled=true
+
+# 广告拦截
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Guard/Advertising.list, tag=广告拦截, force-policy=reject, update-interval=86400, opt-parser=false, enabled=true
+
+# 隐私保护
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Guard/Privacy.list, tag=隐私保护, force-policy=reject, update-interval=86400, opt-parser=false, enabled=true
+
+# 运营商劫持或恶意网站
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Guard/Hijacking.list, tag=运营商劫持, force-policy=reject, update-interval=86400, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/BlockiOSUpdate.list, tag=屏蔽系统更新, force-policy=屏蔽系统更新, update-interval=86400, opt-parser=true, enabled=true
+
+# 规则修正，无需设置策略偏好，保持启用即可
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Unbreak.list, tag=规则修正, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Speedtest/Speedtest.list, tag=Speedtest, force-policy=Speedtest, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/YouTube.list, tag=YouTube, force-policy=YouTube, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Video/Netflix.list, tag=Netflix, force-policy=Netflix, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/Apple.list, tag=Apple服务, force-policy=Apple服务, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/AppStoreConnect.list, tag=TestFlight, force-policy=Apple服务, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/AppStore.list, tag=AppStore, force-policy=Apple服务, update-interval=86400, opt-parser=true, enabled=true
+
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/China.list, tag=国内网站, force-policy=direct, update-interval=86400, opt-parser=true, enabled=true
+
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/StreamingMedia/Streaming.list, tag=国外媒体, force-policy=节点选择, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Global.list, tag=国外网站, force-policy=节点选择, update-interval=86400, opt-parser=true, enabled=true
+
+
+[rewrite_remote]
+https://gitee.com/lxk0301/jd_scripts/raw/master/QuantumultX/lxk0301_cookies.conf, tag=lxk, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js_Remote_Cookie.conf, tag=野比cookie, update-interval=86400, opt-parser=false, enabled=true
+https://raw.githubusercontent.com/CenBoMin/GithubSync/main/RUNSTEP/cookie.conf, update-interval=86400, opt-parser=false, enabled=false
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/TestFlightDownload.conf, tag=TestFlight区域限制解除, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js.conf, tag=NobyDa Js, update-interval=86400, opt-parser=true, enabled=true
+
+https://gitee.com/chavyleung/scripts/raw/master/box/rewrite/boxjs.rewrite.quanx.conf, tag=BoxJs（BoxJs地址：http://boxjs.com）, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/General.conf, tag=神机重定向, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/Advertising.conf, tag=神机去广告, update-interval=86400, opt-parser=true, enabled=true
+
+https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/Block/YouTubeAds.conf, tag=YouTube去广告, update-interval=86400, opt-parser=true, enabled=true
+
+https://gitee.com/ydj0602/hym/raw/QuantumultX/Ease_cookie.conf, tag=ease羊毛, update-interval=86400, opt-parser=false, enabled=false
+https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/ZhiYi-N.cookie.conf, tag=执意Cookie（获取Cookie时启用）, update-interval=86400, opt-parser=true, enabled=false
+
+https://raw.githubusercontent.com/age174/-/main/bodyhj.conf, tag=肥皂Cookie（获取Cookie时启用）, update-interval=86400, opt-parser=true, enabled=false
+
+https://gitee.com/lguann/lguann_self/raw/master/rewrite-cookie-lGuann, tag=Task Cookie（获取Cookie时启用）, update-interval=86400, opt-parser=true, enabled=false
+
+
+[server_local]
+#策略组示例节点,无实义
+vmess=example.com:443, method=chacha20-poly1305, password=23ad6b10-8d1a-40f7-8ad0-e3e35cd32291, obfs=wss, obfs-uri=/ws, fast-open=false, udp-relay=false, tag=蜂窝网
+vmess=example.com:443, method=chacha20-poly1305, password=23ad6b10-8d1a-40f7-8ad0-e3e35cd32291, obfs=wss, obfs-uri=/ws, fast-open=false, udp-relay=false, tag=WI-FI
+
+
+[filter_local]
+# 绕过企业证书过期
+host, ocsp.apple.com, reject
+
+# Local Area Network 局域网
+host-suffix, local, direct
+ip-cidr, 10.0.0.0/8, direct
+ip-cidr, 127.0.0.0/8, direct
+ip-cidr, 172.16.0.0/12, direct
+ip-cidr, 192.168.0.0/16, direct
+ip-cidr, 224.0.0.0/24, direct
+
+# GeoIP China
+geoip, cn, direct
+final, 节点选择
+
+
+[rewrite_local]
+#惠头条cookie
+https:\/\/api\.cashtoutiao\.com url script-request-body https://gitee.com/hanfuxing/personal-collection/raw/master/htt/htt_cookie.js
+#闪赚
+^https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward url script-request-header https://raw.githubusercontent.com/age174/-/main/sz.js
+#蜗牛吧
+^https://api.snail2020.com/api/hb/hb/ url script-request-body https://raw.githubusercontent.com/age174/-/main/wnb.js
+#抖音极速
+https://api.-normal-lite-act-.*.amemv.com/luckycat/aweme/v1/task/sign_in/detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+
+https://api.-normal-lite-act-.*.amemv.com/luckycat/aweme/v1/task/done/read? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+
+https://api.-normal-lite-act-.*.amemv.com/luckycat/aweme/v1/task/walk/step_submit? - script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+#今日头条
+^https:\/\/api3-normal-c-\w+\.snssdk\.com\/score_task\/v1\/task\/(sign_in|get_read_bonus) url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
+^https:\/\/api3-normal-c-\w+\.snssdk\.com\/ttgame\/game_farm\/home_info url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
+#快看点
+^https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/kkd.js
+#烧旅
+https://ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js
+#金钱豹
+^http://jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
+
+
+#人人视频
+;^https:\/\/api\.rr\.tv\/user\/profile url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/rrtv/rrtv.cookie.js
+#返利网获取header
+#https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/flw.js   
+#返利网获取body
+https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-body https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/flw.js
+
+#bilibili
+;^https:\/\/(www|live)\.bilibili\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.cookie.js
+#哔哩哔哩大会员特权领取cookie
+https:\/\/api.bilibili.com\/x\/vip\/privilege\/receive url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/bilibili/privilegeReceive.js
+#csdn
+;^https:\/\/passport.csdn.net\/v2\/api\/app\/login\/checkAndRefreshToken url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
+;^https:\/\/gw.csdn.net\/mini-app\/v2\/lucky_draw\/login\/sign_in\? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
+#wps
+;^https:\/\/zt.wps.cn\/2018\/docer_check_in\/api\/act_list url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.cookie.js
+#weibo
+https:\/\/api\.weibo\.cn\/\d\/page\/\w+\?gsid url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
+;钱包签到Cookie
+;https:\/\/pay\.sc\.weibo\.com\/aj\/mobile\/home\/welfare\/signin\/do\? url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
+#伊利乳品
+;https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-body https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.cookie.js
+#喜马拉雅
+#^https?:\/\/.*\/mobile\-user\/homePage\/.* url script-request-header ximalaya.cookie.js
+#返利网
+;https:\/\/huodong\.fanli\.com\/h5\/Fanlishare20201212\/ajaxInit url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/master/flwhbziye.js   
+;https:\/\/passport\.fanli\.com\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/master/flwhbziye.j 
+# 一刻视频
+#https://api.yikeapp.com url script-request-body https://raw.githubusercontent.com/adwktt/adwktt/master/yk.js
+#步步宝
+;https://bububao.duoshoutuan.com/user/profile url script-request-header https://raw.githubusercontent.com/adwktt/adwktt/master/BBB.js
+#京东直播红包雨
+#zhima
+^https://api.sxsjyzm.com/api2/loot/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
+#梨涡
+^https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/liwo/index.js
+#彩云天气
+https:\/\/((weather-data\.apple)|(api.weather))\.com url script-request-header https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/caiyun.js
+#京东赚赚
+^https\:\/\/api\.m\.jd\.com\/client\.action\?functionId\=interactIndex - script-request-header https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.cookie.js
+#京喜农场
+^https\:\/\/wq\.jd\.com\/cubeactive\/farm\/dotask - script-request-header https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.cookie.js
+# 宠汪汪助力更新Token
+^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/addUser\?code= - script-response-body https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_joy_run.js
+# 宠汪汪助力获取Token
+^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/user\/detail\?openId= - script-request-header https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_joy_run.js
+#笑谱获取header
+;https:\/\/veishop\.iboxpay\.com\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
+#笑谱获取更新TOKEN
+;https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
+#多账号
+;https:\/\/wq\.jd\.com\/user_new\/info\/GetJDUserInfoUnion  url script-request-header https://raw.githubusercontent.com/dompling/Script/master/jd/JD_extra_cookie.js
+#QQ阅读APP获取cookie
+https:\/\/commontgw6\.reader\.qq\.com\/v7_5_2\/nativepage\/getAcctInfo url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/master/Task/QQread.js
+#QQ阅读APP获取视频cookie
+https:\/\/eventv36\.reader\.qq\.com\/activity\/pkg11955\/watchVideo url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/master/Task/QQread.js
+#zgyd
+;^https:\/\/clientaccess.10086.cn\/biz-orange\/LN\/uamrandcodelogin\/autoLogin url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.fee.cookie.js
+;^https:\/\/clientaccess.10086.cn\/biz-orange\/BN\/realFeeQuery\/getRealFee url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.fee.cookie.js
+
+
+
+
+
+
+[task_local]
+0 9,12,20,21 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_global.js, tag=环球挑战赛, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/lxk0301/jd_global.png, enabled=true
+10 0,1 0 * * ? https://raw.githubusercontent.com/chavyleung/scripts/master/box/switcher/box.switcher.js, tag=0点切换会话（京东）, img-url=https://raw.githubusercontent.com/Orz-3/task/master/box.png, enabled=false
+10 0,1 1 * * ? https://raw.githubusercontent.com/chavyleung/scripts/master/box/switcher/box.switcher.js, tag=1点切换会话（京东）, img-url=https://raw.githubusercontent.com/Orz-3/task/master/box.png, enabled=false
+1 0,1 0 * * ? https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag=京东, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png, enabled=true
+0,30 0 1 * * ? https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_rankingList.js, tag=京东排行榜, img-url=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/image/jd.png, enabled=true
+0,30 0 1 * * ? https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.js, tag=京东赚赚, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdzz.png, enabled=true
+0,30 0 1 * * ? https://gitee.com/lxk0301/jd_scripts/raw/master/jx_sign.js, tag=京喜签到, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png, enabled=true
+0,30 0 1 * * ? https://gitee.com/lxk0301/jd_scripts/raw/master/jd_xg.js, tag=小鸽有礼, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/master/Icon/shylocks/jd_xg.jpg, enabled=true
+0,30 0 1 * * ? https://gitee.com/lxk0301/jd_scripts/raw/master/jd_sgmh.js, tag=闪购盲盒, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png, enabled=true
+0,30 0 1 * * ? https://gitee.com/lxk0301/jd_scripts/raw/master/jd_ms.js, tag=京东秒秒币, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/master/Icon/shylocks/jd_ms.jpg, enabled=true
+30 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_xgyl.js, tag=小鸽有礼2, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jd_xgyl.png, enabled=true
+0,1,55,57,58,59 0,59 0,23 * * ? https://gitee.com/lxk0301/jd_scripts/raw/master/jd_blueCoin.js, tag=京小超兑换奖品, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_blueCoin.png, enabled=true
+11 1-23/5 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_superMarket.js, tag=东东超市, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_superMarket.png, enabled=true
+2 0,20 * * * https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_paopao.js, tag=京东泡泡大战, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png
+11 1 * * * https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_lotteryMachine.js, tag=抽奖机, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_lotteryMachine.png, enabled=true
+0 * * * * https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd.js, tag=京喜财富岛, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jx_cfd.png, enabled=true
+30 6,12,22 * * * https://raw.githubusercontent.com/moposmall/Script/main/Me/jx_cfd_exchange.js, tag=京喜财富岛兑换提醒, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jx_cfd_exchange.png, enabled=true
+0 9,12,18 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jxnc.js, tag=京喜农场, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_jxnc.png, enabled=true
+0 9,12,18 * * * https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js, tag=京喜农场2.0, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jxnc.png, enabled=true
+0 1,18 * * * https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_factory_component.js, tag=京喜工厂plus, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jx_factory_component.png, enabled=true
+1 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_family.js, tag=京东家庭号, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_family.png, enabled=true
+0 2 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js, tag=签到领现金, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_cash.png, enabled=true
+1 8,12,18 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bookshop.js, tag=口袋书店, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_bookshop.png, enabled=true
+10 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_crazy_joy.js, tag=CrazyJoy任务, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_crazy_joy.png, enabled=true
+10 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_crazy_joy_coin.js, tag=crazyJoy 挂机, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_crazy_joy.png, enabled=true
+12 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_pigPet.js, tag=京东金融-养猪猪, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_pigPet.png, enabled=true
+0 */3 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js, tag=京东金融-天天提鹅, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_daily_egg.png, enabled=true
+10 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_kd.js, tag=京东快递签到, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_kd.png, enabled=true
+0 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_car_exchange.js, tag=京东汽车兑换, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_car_exchange.png, enabled=true
+10 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_car.js, tag=京东汽车, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_car.png, enabled=true
+10 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js, tag=领京豆额外奖励, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_bean_home.png, enabled=true
+10 7 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_syj.js, tag=十元街, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_syj.png, enabled=true
+10 0,20 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_necklace.js, tag=点点券, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_necklace.png, enabled=true
+10 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jdfactory.js, tag=东东工厂, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_jdfactory.png, enabled=true
+16 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_small_home.js, tag=东东小窝, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_small_home.png, enabled=true
+10 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js, tag=京喜工厂, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_dreamFactory.png, enabled=true
+2 9 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js, tag=京豆变动通知, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_bean_change.png, enabled=true
+0 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js, tag=京东赚赚, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_jdzz.png, enabled=true
+1 1 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_redPacket.js, tag=京东全民开红包, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_redPacket.png, enabled=true
+5 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_club_lottery.js, tag=摇京豆, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_club_lottery.png, enabled=true
+10 0 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_shop.js, tag=进店领豆, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_shop.png, enabled=true
+55 23 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js, tag=取关店铺商品, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_unsubscribe.png, enabled=true
+15 10 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_joy_run.js, tag=宠汪汪邀请助力与赛跑助力, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_joy_run.png, enabled=true
+0 0-16/8 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_joy_reward.js, tag=宠汪汪积分兑换奖品, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_joy_reward.png, enabled=true
+15 */1 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_joy_feedPets.js, tag=宠汪汪喂食, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_joy_feedPets.png, enabled=true
+0 0,6 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_joy_steal.js, tag=宠汪汪偷好友积分与狗粮, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_joy_steal.png, enabled=true
+15 */2 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_joy.js, tag=宠汪汪, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_joy.png, enabled=true
+3 */2 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_moneyTree.js, tag=摇钱树, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_moneyTree.png, enabled=true
+8 */3 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_speed.js, tag=天天加速, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_speed.png, enabled=true
+1 7-21/2 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_plantBean.js, tag=种豆得豆, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_plantBean.png, enabled=true
+15 6-18/6 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_pet.js, tag=东东萌宠, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_pet.png, enabled=true
+5 6-18/6 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_fruit.js, tag=东东农场, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_fruit.png, enabled=true
+0 30/30 6 1,8,16,24 * ? https://gitee.com/qq34347476/quantumult-x/raw/master/format_share_jd_code.js, tag=获取并格式化助力码, img-url=https://raw.githubusercontent.com/yogayyy/task/master/huzhucode.png, enabled=true
+30 * * * * https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/chonghua.js, tag=葱花视频, enabled=true
+
+#qq阅读
+*/60 0-23 * * * https://raw.githubusercontent.com/ziye66666/JavaScript/master/Task/QQread.js, tag=QQ阅读 自定义账号, img-url=https://raw.githubusercontent.com/Orz-3/task/master/QQ.png, enabled=true
+
+#步步宝
+0,30 * * * * https://raw.githubusercontent.com/adwktt/adwktt/master/BBB.js, tag=步步宝, enabled=true
+5 1 * * * https://raw.githubusercontent.com/age174/-/main/bigfun.js, tag=bigfun签到, img-url=https://raw.githubusercontent.com/shoujiqiyuan/PokemonGOforQuanX/master/IconSet/Z003.png, enabled=true
+1,30 10-20 * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js, tag=爆燃视频, enabled=true
+
+#贴吧
+1 0 * * * https://raw.githubusercontent.com/NobyDa/Script/master/BDTieBa-DailyBonus/TieBa.js, tag=百度贴吧, enabled=true
+
+#中青
+;签到&转盘任务
+*/30 0-23 * * * https://raw.githubusercontent.com/CenBoMin/QuantumultX/master/Scripts/Youth/youth.js, tag=中青看点极速版, img-url=https://raw.githubusercontent.com/Orz-3/task/master/youth.png, enabled=true
+;自动阅读任务
+10 1-23 * * * https://raw.githubusercontent.com/CenBoMin/QuantumultX/master/Scripts/Youth/Youth_AutoRead.js, tag=中青阅读, img-url=https://raw.githubusercontent.com/Orz-3/task/master/youth.png, enabled=true
+15 0 * * * https://raw.githubusercontent.com/age174/-/main/jqb.js, tag=金钱豹, img-url=https://ftp.bmp.ovh/imgs/2021/02/9e6d449acb9b6889.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/ZhiYi-N/script/master/kkd.js, tag=快看点, img-url=https://qxzy.top/rules/QuantumultX/img/kkd.png, enabled=true
+*/15 * * * * https://raw.githubusercontent.com/CenBoMin/GithubSync/main/RUNSTEP/runstep.js, tag=走路赚钱, img-url=https://gitee.com/ydj0602/hym/raw/img/ZLZQ1.png, enabled=true
+*/10 * * * * https://raw.githubusercontent.com/age174/-/main/sz.js, tag=闪挣, img-url=https://ae01.alicdn.com/kf/U0eeed99dbe9a4cf99b73aaed7902a3a9z.jpg, enabled=true
+*/2 0-16 * * * https://gitee.com/hanfuxing/personal-collection/raw/master/htt/htt_task.js, tag=惠头条, img-url=https://raw.githubusercontent.com/Orz-3/task/master/htt.png, enabled=true
+
+#喜马拉雅
+
+#app价格监控
+30 7-22 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/appstore/AppMonitor.js, tag=App价格监控
+
+#热门监控
+30 0 6-22/2 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/hotsearch/hot.js, tag=热门监控, enabled=true
+
+#彩云天气
+0 6-22/1 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/caiyun.js, tag=彩云天气, enabled=true
+
+#历史上的今天
+0 6 * * * https://raw.githubusercontent.com/dompling/Script/master/historyToday/index.js, tag=历史上的今天, enabled=true
+
+#伊利乳品
+10 0 * * * https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.js, tag=伊利乳品, img-url=https://raw.githubusercontent.com/id77/QuantumultX/master/icon/yiLi.png
+
+#返利网8点签到（圈X）
+
+#qq读书
+# 中青看点极速版自动阅读
+# 中青看点极速版
+
+# 倒数日
+0 8 * * * https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Task/daysmatter.js, tag=倒数日, img-url=https://raw.githubusercontent.com/Orz-3/task/master/daysmatter.png,enabled=true
+
+# bilibili
+#打开浏览器访问: https://www.bilibili.com 或 https://live.bilibili.com
+2 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.js, tag=bilibili, img-url=https://raw.githubusercontent.com/Orz-3/task/master/bilibili.png,enabled=true
+#如需银瓜子转硬币，取消下方注释
+2 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.silver2coin.js, tag=bilibili银瓜子转硬币, img-url=https://raw.githubusercontent.com/Orz-3/task/master/bilibili.png,enabled=true
+
+# 网易云音乐
+#1. 先登录: <https://music.163.com/m/login>
+#2. 再访问: <https://music.163.com/#/user/level>
+#3. 提示: `获取会话: 成功!`
+
+# CSDN
+# 打开 APP , 系统提示: `获取刷新链接: 成功`,然后手动签到 1 次, 系统提示: `获取Cookie: 成功`
+7 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.js, tag=CSDN, img-url=https://raw.githubusercontent.com/Orz-3/task/master/csdn.png,enabled=true
+
+# WPS
+# 打开 APP 我 > 签到 (右上角, 不用手动签到)
+12 0 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.js, tag=WPS, img-url=https://raw.githubusercontent.com/Orz-3/task/master/wps.png,enabled=true
+
+# 有道云笔记
+
+#TestFlight公测监控 (By @syzzzf)
+0 0-23/1 * * * https://raw.githubusercontent.com/songyangzz/QuantumultX/master/testflight.js, tag=TestFlight公测监控, img-url=https://raw.githubusercontent.com/Orz-3/task/master/testflight.png, enabled=true
+
+6 0 * * * https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js, tag=微博, img-url=https://raw.githubusercontent.com/Orz-3/task/master/weibo.png,enabled=true
+0 */1 * * * https://raw.githubusercontent.com/age174/-/main/zmsp.js, tag=芝嫲视频, img-url=https://s3.ax1x.com/2021/02/06/yYzeWn.png, enabled=true
+10 16 15 * * ? https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txstockqx.js, tag=腾讯自炒股, enabled=true
+3,30 0 * * * https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txstockcow.js, tag=活动-长牛来了, img-url=https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txzxg.png, enabled=true
+15 10 * * * https://raw.githubusercontent.com/age174/-/main/ymz.js, tag=羊毛赚, img-url=https://s3.ax1x.com/2021/02/06/yYzYWR.png, enabled=true
+*/10 * * * * https://raw.githubusercontent.com/age174/-/main/dkd.js, tag=多看点日常, img-url=https://gitee.com/ydj0602/hym/raw/img/DKD.PNG, enabled=true
+5 9,16,21 * * * https://raw.githubusercontent.com/age174/-/main/dkdsp.js, tag=多看点视频, img-url=https://gitee.com/ydj0602/hym/raw/img/DKD.PNG, enabled=true
+*/5 6-23 * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js, tag=抖音火山版, img-url=https://gitee.com/ydj0602/hym/raw/img/DYHSB.PNG, enabled=true
+40 * * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js, tag=抖音极速版, img-url=https://qxzy.top/rules/QuantumultX/img/dyjsb.png, enabled=true
+15,45 10-22 * * * https://raw.githubusercontent.com/age174/-/main/wnb.js, tag=蜗牛吧, img-url=https://ftp.bmp.ovh/imgs/2021/02/221a7d94eaa0dddf.jpeg, enabled=true
+5,35 8-23 * * * https://qxzy.top/rules/QuantumultX/js/zy/jrtt.js, tag=今日头条极速版, img-url=https://qxzy.top/rules/QuantumultX/img/jrtt.png, enabled=true
+0 */30 8-23 * * * https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/iboxpay.js, tag=笑谱, enabled=true
+0,1 0,11 * * ? https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/flw.js, tag=返利网, img-url=https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/flw.jpg, enabled=true
+17 0,20 * * * https://raw.githubusercontent.com/iepngs/Script/master/liwo/index.js, tag=梨涡签到, img-url=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Icon/liwo.png, enabled=true
+20 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/rrtv/rrtv.js, tag=人人视频, img-url=https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/rrtv.png, enabled=true
+
+
+0 8 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/github.js, tag=GitHub, img-url=https://raw.githubusercontent.com/Orz-3/task/master/github.png, enabled=false
+
+# 汇率监控(By Peng-YM)
+#笑谱
+
+[mitm]
+passphrase = 3B391D65
+p12 = MIIKuwIBAzCCCoUGCSqGSIb3DQEHAaCCCnYEggpyMIIKbjCCBMcGCSqGSIb3DQEHBqCCBLgwggS0AgEAMIIErQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQIVlcKYe5MIi8CAggAgIIEgG+Ni7RzHqOI9Y814tC4M56X/09Nggfj9AbqwJdFtTZSJ4DG/ZOuHpOnPm/ZHgpuV5jWCH4NZ89kKOWMCzisZtLC/HmKFSbsCPgS/bUk/r8+HOBO/GTqlDnfHTrtT0uw6ul0Xqhm3NISmTtR0mJUamTmzpiTYrHVElr/UHYhO1dKJk0d4R5na7k8uExsq2Jjv36UQ22XgpmhDuGwazxkKhVlr8ULZ0TFJgMl8WBDWfMMvfymgEVYKDL4ZjzaDFGRQD1kPLRL8LNXDkVTSjhT49PRDkAxDCZIruF/CE6u/mpqEPH9sVBCI28k8PLbXhAtI5xtX7v+8rK3ED1kUpaVEN547fEhfTx9trga4brh69SdW7BTbwb032ECM53vsaGTTu2dI5NpdVOUB0VDUSMXk9mIBVOGADQJzzst8GpHQ9rP0BcRx/0aZ7sQoemu8+5maxMvbmqrV5cIoTSE9jHcEu7RCYoyCyRZR9TQNDwoiqJUWqUKy0a7ffD9VpXF2AeQpDoRouRgTGlJ5ICVDna66FzrSAYi/axeQxbBBmwB+DYJGJhG6iL0rBawGPj2Q39LHHtYg/D9ubeCBJjEwymsD6N7X4CBkv+Oi9Q+3k3AE6l0uE+g8ObRt/wbwM/gfKDvdToG7IW2PwajLwNd+Lf7GjUL4S1dxC1VzjslkMC/YZVfF7eFJ7iL32AHTc/DTOdKQxEIvaHt+EBVPutXx5NFIwWNKMARnayyWVII+jff0VEDz1AqHjCAtNVN50pE23ZJPmpfHwynjgU4fBbSrdJ2osz8sGxigK1PYOTROVtO15n7ZlzrkIzCwKuXyYTJ+pZZ/6E0Vg61Kgxwu071Gk4QO1yFWaP8XeBKbNzf08nEhQ2dnsBCR6ZM0PsSOGgisA7o6jAFfMTOmgd52Ql/kSWZ3rgamZQ7F5yPoy2+j982HX3GGZC8PibojBokAR/HeggZakazRrPkWtPIcfLjsnKtaB0Xbnvy7PKOVvMaxISlFitKjx8JL7ECXYOgGoSpgivwW7H1WIo5OO4st9enQa/jn/xjgvb0Sb+8NE1PXnbqt9tgmOypH28A1fJOCNtYdhubJvnxpXv5CMuGmYpq6iA6OCLhu7ftP7WxYiSDXkdAFv6M0xfaoph1DMJSpAfcphH1NtmtmBOSevhioq2mLPxgQ35WzDJN9oSbBwXcEIfpkWV6Y8ExCTw0VfA1xa61j2iClIh8R5x1oCOn0xZPkbe+AKv/prbJjFfUCD5MUAMY63XNQLsm2IeeRW4UN7VbisKrBy4HxAmfInIS08f5KSc8zm//77X9s7NSf427yyF4tfz5Dt+qFZlyXrmANFAwCq7VupScjsF+rqHJVUru4B0fetkjSWxXgI0p9awpqMnB5WnXMhflnZEql4w6ld4o1sUjOh/mjC7ZJ1VpaQQkJfagtHT/+b2d9bdkdIKmP6JUQAAP0H++QmnNcnTGZAU+eGuAOeZ0Aryg0PcViP5kNcLCbF+jXCw6Skz9G1mWCGDIKkS8Bg8WNEjEjNQigtsawKm28DCCBZ8GCSqGSIb3DQEHAaCCBZAEggWMMIIFiDCCBYQGCyqGSIb3DQEMCgECoIIE7jCCBOowHAYKKoZIhvcNAQwBAzAOBAhBOxocRKKXGgICCAAEggTIlHwKKJjspY5C+RtwQHZX2jJfycnmoqtaxriCtU6f/361kD9HTj/o2mAtHdgedOznNMvssWtjzCykzXxYwBZ7770/h34X9ki0LQnCy20vRlMnoJoD/GHNWEKPM2tpcy1dId8Z0JUVUUf8zDU2o1F7V8MDe9C+4e8EtWHSZIP/BupcsH75sd9lioB69+ro2A2PmuwgtHVGA6GDT9GSU1vRnooxp/3S2K1oxvM21wv9Fa9ZTa93UqhMgA3ncjCjSVJmAr6YgVzyhY3qcImNjFsAgaKGGjRGXk8cWZduyGADCqOHnWlZjQHWvlNvO6jFSZsTNkfzI5d0ck7Jq0ZQlRtl9g3QiC5CFawCY/WEf4W1H9YUHM5ygHEiHC2kcaZ0MnFl+8UUO78+MeW9LgJ+tRXIZfN3fv9VCI2wulMtKDXxqzRECW5fGpf3riU3NJLI6lX+0gbtexE8TQMNbG7A4H09E7wDJGKBWZtmw+2+kPL9ah/SRp0UnCjI5Z0U6x8vrQKXTdLvokrVrDeN6doo8xMqsvQACHJDoEBF1fW3AQhz5XN5cbPkcz/wDu/OWN27qmZhBV4uYHXTcxCYmn5Q7yHLJUqHUnpTG74rc0Qp9aiapMmxWURIlSDRk9+NO4dmBfWtD5Qnfsqc+tGkxywjUo6Kcr3Zo94ZAEgaY/X/oXvd+Xkr9UR0OyanhYxp4qbXbwI2rXiRshj016ogB0NVnvDMtI/+q/7vKwxC/dQ0L0uUCt6oJ1EZspJ7Pr5dn6nVQCWGWYjUGUeSOvJlZGh1RzHKLwADUvnV7KU6HIcKZGbRYjPukQV0lOvnBD8KIvKU8EjnjjAjoOYkeiGcfBlcJFHbUQUGZhdkJITN4Hva5Vspe/Z+xSBxA0utjvO+CZGnIoPl/WPBnAXc7AvC3X1AeU6A4FmOgj4R0aEyWVmxbSIVx8+n3cZxDEIoKjDgzhXJeUdTBm69JUERJNnl0mELwKe0zbI5Ss+w+i0ajRE3PVGoLiGyHp0cHMvQzzNGH1bQ4+xys4eNBWPK1dK24Oi53xq+BG/9VPV6IgnBk2U+CT3rsTDjfrQTZuUd7wfxjzlSKAg1TCT4kMOWP7hSkqgVzq0hmkMNQq5tlm0VdIlUf0sHRJiWPXtk+NpiUA6Yiwezp7haAORQBG3Uev/DCc1AHlcBxdY0WwvTv9zhznlvZyzAiiuUOVuc5z6truuUmay3Rf5QOzIlssEodAFiRE9v6Xi9OTALNkstDZvaysZPDX6sXw2zh3z7DbLbuqrTrlnYOBbwrd7VmgY3W67Po8s/eYI9ujJznRCUiNCrQ4dhNNsedob7gS/Gf30rseCIT8ErODqCvCSPD0SIO3QVtxuiLUwK8o8zrKkSDY3gIpfj/C3EdP7kYxXmAgbwOivpc1LzoND13sKBOHFcVXIwlmFavQnHHKV4HIB3Uu/L/pzLZxKtAZsOKE5lAioRH7poFjRQL69LqTLpmwjQLPRGXqfokBF3k+Lf6Gg+zUuB9YAvVYEy2zF0NuxiddNmdKDQ555U0gm0f2jdQCHC7NhnXG9si2/RM5hn3lCYZfrb0INJNQj48ndpCop1AKMI5mBCu9g2lfCA/V0wneYNkY5veaAADhDIlNCCGDinEG2iMYGCMCMGCSqGSIb3DQEJFTEWBBSJNwucuKXV5kk7Wi61JNorqBifZTBbBgkqhkiG9w0BCRQxTh5MAFEAdQBhAG4AdAB1AG0AdQBsAHQAIABYACAAQwBBACAAMwBCADMAOQAxAEQANgA1ACAAKAAxADUAIABOAG8AdgAgADIAMAAyADAAKTAtMCEwCQYFKw4DAhoFAAQUm0oZC/xHTpeEnSTNUxLwhul8ZJoECNKs45izQm5C
+;passphrase =
+;p12 =
+;skip_validating_cert = false
+;force_sni_domain_name = false
+;hostname = *.example.com, *.sample.com
+hostname = api.vc.bilibili.com, weather-data.apple.com, api.weather.com, club.yili.com, mqqapi.reader.qq.com, mobwsa.ximalaya.com, commontgw6.reader.qq.com, eventv3.reader.qq.com, huodong.fanli.com, passport.fanli.com, gw.fanli.com, draw.jdfcloud.com, veishop.iboxpay.com, c.tieba.baidu.com, api.yikeapp.com, commontgw6.reader.qq.com,eventv36.reader.qq.com, bububao.duoshoutuan.com, *.bilibili.com, *.csdn.net, 110.43.90.61, zt.wps.cn, api.weibo.cn, pay.sc.weibo.com, skip_validating_cert = true, clientaccess.10086.cn, api.sxsjyzm.com, *.rr.tv, ranlv.lvfacn.com, jqb.iphonezhuan.com, api.yuncheapp.cn, api3-normal-c-*.snssdk.com, api*-normal-lite-act-*.amemv.com, api.snail2020.com, mobile.app.autohome.com.cn, api-9f9d25.sz365.cn, api.cashtoutiao.com
+
+
+
+
